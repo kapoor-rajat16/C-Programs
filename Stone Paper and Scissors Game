@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int generateRandomNumber()
+{
+    srand(time(NULL));
+    int no = rand() % 3;
+    return no;
+}
+
+int main(int argc, char const *argv[])
+{
+    int comp = 0, player = 0, n, random_no, choice;
+    char name[20];
+    printf("WELCOME!!\nplease enter your name\n");
+    scanf("%s", &name);
+    getchar();
+    printf("please enter the no of times you want to play rock paper and scissor game \n");
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++)
+    {
+        printf("player: please enter your choice\n0:ROCK\n1:PAPER\n2:SCISSOR\n");
+        scanf("%d", &choice);
+        int random_no = generateRandomNumber();
+        printf("computer's choice is %d\n", random_no);
+        if (choice == 0 && random_no == 2)
+        {
+            player++;
+        }
+
+        if (choice == 1 && random_no == 0)
+        {
+            player++;
+        }
+
+        if (choice == 2 && random_no == 1)
+        {
+            player++;
+        }
+        else
+        {
+            if (choice != random_no)
+            {
+                comp++;
+            }
+        }
+        printf("\n");
+    }
+
+    printf("%s has scored %d\n", name, player);
+    printf("computer has scored %d\n", comp);
+
+    if (player > comp)
+    {
+        printf("CONGRATES %s YOU WON", name);
+    }
+    else if (comp > player)
+    {
+        printf("computer won");
+    }
+    else
+    {
+        printf("game is a tie");
+    }
+
+    return 0;
+}
